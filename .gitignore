@@ -24,3 +24,5 @@ timeline.xctimeline
 playground.xcworkspace
 
 .build/
+
+.DS_Store
