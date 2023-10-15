@@ -17,7 +17,7 @@ struct LandmarkRow: View {
                 .resizable()
                 .frame(width: 50, height: 50)
             
-            Text("Hello, World!")
+            Text(landmark.name)
             
             Spacer()
         }
@@ -26,5 +26,8 @@ struct LandmarkRow: View {
 
 
 #Preview {
-    LandmarkRow(landmark: landmarks[0])
+    Group {
+        LandmarkRow(landmark: landmarks[0])
+        LandmarkRow(landmark: landmarks[1])
+    }
 }
