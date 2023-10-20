@@ -7,7 +7,29 @@
 
 import SwiftUI
 
+// `extension` は既に存在している型に、プロパティ、メソッド、イニシャライザを追加できる拡張
+/**
+ 1> extension String {
+ 2.     func sayHi() {
+ 3.         print(self, " Hi!")
+ 4.     }
+ 5. }
+ 6> let name = "nabetama"
+ name: String = "nabetama"
+ 7> name.sayHi()
+ nabetama  Hi!
+ */
+extension AnyTransition {
+    static var moveAndFade: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: .trailing).combined(with: .opacity),
+            removal: .scale.combined(with: .opacity)
+        )
+    }
+}
+
 struct HikeView: View {
+    
     var hike: Hike
     @State private var showDetail = false
     
@@ -42,6 +64,7 @@ struct HikeView: View {
             
             if showDetail {
                 HikeDetail(hike: hike)
+                    .transition(.moveAndFade)
             }
         }
     }
